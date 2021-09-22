@@ -1,0 +1,267 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">Descrizione</a>
+        <a class="item" data-tab="details">Dettagli</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="attributes-section tab details" data-group="primary" data-tab="details">
+            <h2 class="attributes-header">Generici</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Tipo</h3>
+                    <div class="attribute-value">
+                        <select name="data.type">
+                            {{#select data.type}}
+                            <option value="naturechant">Canto della Natura</option>
+                            <option value="enchant">Incantesimo</option>
+                            <option value="prayer">Preghiera</option>
+                            <option value="morph">Metamorfosi</option>
+                            <option value="invocation">Invocazioni</option>
+                            <option value="necromancy">Necromanzia</option>
+                            <option value="manacontrol">Controllo del Mana</option>
+                            <option value="music">Melodia</option>
+                            <option value="goblinshaman">Shamanesimo Goblin</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Costo Mana</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.manaprice" type="text" value="{{data.manaprice}}" data-dtype="Number" />
+                    </div>
+                </li>
+            </ul>
+            <h2 class="attributes-header">Durata</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Caratteristica</h3>
+                    <div class="attribute-value">
+                        <select name="data.duration.attribute">
+                            {{#select data.duration.attribute}}
+                            <option value="">Nessuna</option>
+                            <option value="empty">Liscio</option>
+                            <option value="agility">Agilità</option>
+                            <option value="courage">Coraggio</option>
+                            <option value="strength">Forza</option>
+                            <option value="magic">Magia</option>
+                            <option value="intelligence">Intelligenza</option>
+                            <option value="dexterity">Manualità</option>
+                            <option value="perception">Percezione</option>
+                            <option value="sociality">Socialità</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Dado</h3>
+                    <div class="attribute-value">
+                        <select name="data.duration.faces">
+                            {{#select data.duration.faces}}
+                            <option value="4">d4</option>
+                            <option value="6">d6</option>
+                            <option value="8">d8</option>
+                            <option value="10">d10</option>
+                            <option value="12">d12</option>
+                            <option value="20">d20</option>
+                            <option value="100">d100</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Tiro</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.duration.modifier" type="text" value="{{data.duration.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Testo Personalizzato</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute full-width" name="data.duration.custom" type="text" value="{{data.duration.custom}}" data-dtype="String" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Formula Personalizzata</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute full-width" name="data.duration.customformula" type="text" value="{{data.duration.customformula}}" data-dtype="String" />
+                    </div>
+                </li>
+            </ul>
+            <h2 class="attributes-header">Bersaglio</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Caratteristica</h3>
+                    <div class="attribute-value">
+                        <select name="data.target.attribute">
+                            {{#select data.target.attribute}}
+                            <option value="">Nessuna</option>
+                            <option value="empty">Liscio</option>
+                            <option value="agility">Agilità</option>
+                            <option value="courage">Coraggio</option>
+                            <option value="strength">Forza</option>
+                            <option value="magic">Magia</option>
+                            <option value="intelligence">Intelligenza</option>
+                            <option value="dexterity">Manualità</option>
+                            <option value="perception">Percezione</option>
+                            <option value="sociality">Socialità</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Dado</h3>
+                    <div class="attribute-value">
+                        <select name="data.target.faces">
+                            {{#select data.target.faces}}
+                            <option value="4">d4</option>
+                            <option value="6">d6</option>
+                            <option value="8">d8</option>
+                            <option value="10">d10</option>
+                            <option value="12">d12</option>
+                            <option value="20">d20</option>
+                            <option value="100">d100</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Tiro</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.target.modifier" type="text" value="{{data.target.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Formula Personalizzata</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute full-width" name="data.target.customformula" type="text" value="{{data.target.customformula}}" data-dtype="String" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Testo Personalizzato</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute full-width" name="data.target.custom" type="text" value="{{data.target.custom}}" data-dtype="String" />
+                    </div>
+                </li>
+            </ul>
+            <h2 class="attributes-header">Tiro per Colpire</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Caratteristica</h3>
+                    <div class="attribute-value">
+                        <select name="data.hit.attribute">
+                            {{#select data.hit.attribute}}
+                            <option value="">Nessuna</option>
+                            <option value="empty">Liscio</option>
+                            <option value="agility">Agilità</option>
+                            <option value="courage">Coraggio</option>
+                            <option value="strength">Forza</option>
+                            <option value="magic">Magia</option>
+                            <option value="intelligence">Intelligenza</option>
+                            <option value="dexterity">Manualità</option>
+                            <option value="perception">Percezione</option>
+                            <option value="sociality">Socialità</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Tiro</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.hit.modifier" type="text" value="{{data.hit.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Formula Personalizzata</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute full-width" name="data.hit.customformula" type="text" value="{{data.hit.customformula}}" data-dtype="String" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Testo Personalizzato</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute full-width" name="data.hit.custom" type="text" value="{{data.hit.custom}}" data-dtype="String" />
+                    </div>
+                </li>
+            </ul>
+            <h2 class="attributes-header">Danni</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Caratteristica</h3>
+                    <div class="attribute-value">
+                        <select name="data.damage.attribute">
+                            {{#select data.damage.attribute}}
+                            <option value="">Nessuna</option>
+                            <option value="empty">Liscio</option>
+                            <option value="agility">Agilità</option>
+                            <option value="courage">Coraggio</option>
+                            <option value="strength">Forza</option>
+                            <option value="magic">Magia</option>
+                            <option value="intelligence">Intelligenza</option>
+                            <option value="dexterity">Manualità</option>
+                            <option value="perception">Percezione</option>
+                            <option value="sociality">Socialità</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Dado</h3>
+                    <div class="attribute-value">
+                        <select name="data.damage.faces">
+                            {{#select data.damage.faces}}
+                            <option value="4">d4</option>
+                            <option value="6">d6</option>
+                            <option value="8">d8</option>
+                            <option value="10">d10</option>
+                            <option value="12">d12</option>
+                            <option value="20">d20</option>
+                            <option value="100">d100</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Tiro</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.damage.modifier" type="text" value="{{data.damage.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Testo Personalizzato</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute full-width" name="data.damage.custom" type="text" value="{{data.damage.custom}}" data-dtype="String" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Cura?</h3>
+                    <div class="attribute-value">
+                        <input type="checkbox" name="data.damage.healing" {{checked item.data.damage.healing}} />
+                    </div>
+                </li>
+                <li>
+                    <h3>Formula Personalizzata</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute full-width" name="data.damage.customformula" type="text" value="{{data.damage.customformula}}" data-dtype="String" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</form>

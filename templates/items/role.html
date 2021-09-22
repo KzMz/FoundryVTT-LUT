@@ -1,0 +1,104 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">Descrizione</a>
+        <a class="item" data-tab="details">Dettagli</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="attributes-section tab details" data-group="primary" data-tab="details">
+            <h2 class="attributes-header">Attributi</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Mod. Salute</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.healthmod" type="text" value="{{data.healthmod}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Mana</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.manamod" type="text" value="{{data.manamod}}" data-dtype="Number" />
+                    </div>
+                </li>
+            </ul>
+            <h2 class="attributes-header">Caratteristiche</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Dadi Agilità</h3>
+                    <div class="attribute-value">
+                        <input name="data.attributes.agility" type="text" value="{{data.attributes.agility}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Dadi Coraggio</h3>
+                    <div class="attribute-value">
+                        <input name="data.attributes.courage" type="text" value="{{data.attributes.courage}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Dadi Forza</h3>
+                    <div class="attribute-value">
+                        <input name="data.attributes.strength" type="text" value="{{data.attributes.strength}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Dadi Intelligenza</h3>
+                    <div class="attribute-value">
+                        <input name="data.attributes.intelligence" type="text" value="{{data.attributes.intelligence}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Dadi Magia</h3>
+                    <div class="attribute-value">
+                        <input name="data.attributes.magic" type="text" value="{{data.attributes.magic}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Dadi Manualità</h3>
+                    <div class="attribute-value">
+                        <input name="data.attributes.dexterity" type="text" value="{{data.attributes.dexterity}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Dadi Percezione</h3>
+                    <div class="attribute-value">
+                        <input name="data.attributes.perception" type="text" value="{{data.attributes.perception}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Dadi Socialità</h3>
+                    <div class="attribute-value">
+                        <input name="data.attributes.sociality" type="text" value="{{data.attributes.sociality}}" data-dtype="Number" />
+                    </div>
+                </li>
+            </ul>
+            <h2 class="attributes-header">Abilità di Ruolo</h2>
+            <div class="tab features">
+                <ul class="features-list">
+                    {{#each item.features as |f id|}}
+                    <li class="item flexrow" data-item-id="{{f._id}}">
+                        <img src="{{f.img}}" title="{{f.name}}" width="24" height="24"/>
+                        <h4 class="item-name item-details-toggle description-hidden">{{f.name}}</h4>
+                        <div class="item-description">{{{f.data.description}}}</div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </section>
+</form>

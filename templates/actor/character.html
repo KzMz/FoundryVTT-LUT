@@ -1,0 +1,438 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        <div class="header-fields">
+            <h3>Sono </h3><h2 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h2>
+            <br>
+            <h3>Un/a </h3>
+            <h2 class="classname">
+                <input readonly type="text" value="{{actor.race.name}}" placeholder="Droppa razza qui"/>
+                <input readonly type="text" value="{{actor.role.name}}" placeholder="Droppa ruolo qui"/>
+            </h2>
+            <h3>della Gilda </h3><h2 class="charname"><input readonly name="guild" type="text" value="{{actor.guild.name}}" placeholder="Droppa gilda qui"/></h2>
+        </div>
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="150" width="150"/>
+    </header>
+
+    {{!-- Attributes Section --}}
+    <h2 class="attributes-header"><a class="rollable specialty" title="Pregio"><i class="fas fa-dice-d6"></i> Pregio Casuale</a>Caratteristiche<a class="rollable recover" title="Recupero">Recupero <i class="fas fa-dice-d6"></i></a></h2>
+    <section class="attributes-section">
+        <ul class="attributes-list">
+            <li>
+                <input type="checkbox" name="data.attributes.agility.specialty" {{checked actor.data.attributes.agility.specialty}} />
+                <h3 class="rollable attribute"><a>Agilità</a></h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.agility.dice" type="text" value="{{data.attributes.agility.dice}}" data-dtype="Number" />D +<input class="dice-modifier" name="data.attributes.agility.modifier" type="text" value="{{data.attributes.agility.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+            <li>
+                <input type="checkbox" name="data.attributes.courage.specialty" {{checked actor.data.attributes.courage.specialty}} />
+                <h3 class="rollable attribute"><a>Coraggio</a></h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.courage.dice" type="text" value="{{data.attributes.courage.dice}}" data-dtype="Number" />D +<input class="dice-modifier" name="data.attributes.courage.modifier" type="text" value="{{data.attributes.courage.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+            <li>
+                <input type="checkbox" name="data.attributes.strength.specialty" {{checked actor.data.attributes.strength.specialty}} />
+                <h3 class="rollable attribute"><a>Forza</a></h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.strength.dice" type="text" value="{{data.attributes.strength.dice}}" data-dtype="Number" />D +<input class="dice-modifier" name="data.attributes.strength.modifier" type="text" value="{{data.attributes.strength.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+			<li>
+                <input type="checkbox" name="data.attributes.intelligence.specialty" {{checked actor.data.attributes.intelligence.specialty}} />
+                <h3 class="rollable attribute"><a>Intelligenza</a></h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.intelligence.dice" type="text" value="{{data.attributes.intelligence.dice}}" data-dtype="Number" />D +<input class="dice-modifier" name="data.attributes.intelligence.modifier" type="text" value="{{data.attributes.intelligence.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+			<li>
+                <input type="checkbox" name="data.attributes.magic.specialty" {{checked actor.data.attributes.magic.specialty}} />
+                <h3 class="rollable attribute"><a>Magia</a></h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.magic.dice" type="text" value="{{data.attributes.magic.dice}}" data-dtype="Number" />D +<input class="dice-modifier" name="data.attributes.magic.modifier" type="text" value="{{data.attributes.magic.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+			<li>
+                <input type="checkbox" name="data.attributes.dexterity.specialty" {{checked actor.data.attributes.dexterity.specialty}} />
+                <h3 class="rollable attribute"><a>Manualità</a></h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.dexterity.dice" type="text" value="{{data.attributes.dexterity.dice}}" data-dtype="Number" />D +<input class="dice-modifier" name="data.attributes.dexterity.modifier" type="text" value="{{data.attributes.dexterity.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+			<li>
+                <input type="checkbox" name="data.attributes.perception.specialty" {{checked actor.data.attributes.perception.specialty}} />
+                <h3 class="rollable attribute"><a>Percezione</a></h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.perception.dice" type="text" value="{{data.attributes.perception.dice}}" data-dtype="Number" />D +<input class="dice-modifier" name="data.attributes.perception.modifier" type="text" value="{{data.attributes.perception.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+			<li>
+                <input type="checkbox" name="data.attributes.sociality.specialty" {{checked actor.data.attributes.sociality.specialty}} />
+                <h3 class="rollable attribute"><a>Socialità</a></h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.sociality.dice" type="text" value="{{data.attributes.sociality.dice}}" data-dtype="Number" />D +<input class="dice-modifier" name="data.attributes.sociality.modifier" type="text" value="{{data.attributes.sociality.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+        </ul>
+        <ul class="attributes-list stats">
+            <li>
+                <input class="over-icon" type="text" name="data.armor.value" value="{{data.armor.value}}" data-dtype="Number"/>
+                <img src="systems/ultima-torcia/images/armor.png" />
+                <h2>Armatura</h2>
+            </li>
+            <li>
+                <input class="over-icon" type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
+                <img src="systems/ultima-torcia/images/health.png" />
+                <h2>Salute</h2>
+                <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
+                <h3>Attuale</h3>
+            </li>
+            <li>
+                <input class="over-icon" type="text" name="data.mana.max" value="{{data.mana.max}}" data-dtype="Number"/>
+                <img src="systems/ultima-torcia/images/mana.png" />
+                <h2>Mana</h2>
+                <input type="text" name="data.mana.value" value="{{data.mana.value}}" data-dtype="Number"/>
+                <h3>Attuale</h3>
+            </li>
+        </ul>
+    </section>
+
+    <section class="attributes-section" style="margin-top: 10px;">
+        <div class="attributes-list" style="justify-content: center;">
+            <h3>Punti Avventura</h3>
+            <input class="adventurepoints" type="text" value="{{data.adventurepoints}}" placeholder="0" name="data.adventurepoints"/>
+        </div>
+        <div class="attributes-list" style="justify-content: center;">
+            <h3>Fiorini</h3>
+            <input class="gold" type="text" value="{{data.gold}}" placeholder="0" name="data.gold"/>
+        </div>
+    </section>
+
+    <section class="attributes-section consumables" style="margin-top: 10px;">
+        <div class="attributes-list" style="justify-content: center;">
+            <h3>Borraccia</h3>
+            <input class="gold" type="text" value="{{data.survival.water.value}}" placeholder="0" name="data.survival.water.value"/>/{{data.survival.water.max}}
+        </div>
+        <div class="attributes-list" style="justify-content: center;">
+            <h3>Razioni</h3>
+            <input class="gold" type="text" value="{{data.survival.rations.value}}" placeholder="0" name="data.survival.rations.value"/>/{{data.survival.rations.max}}
+        </div>
+        <div class="attributes-list" style="justify-content: center;">
+            <h3>Razioni Aggiuntive</h3>
+            <input class="gold" type="text" value="{{data.survival.additionalrations.value}}" placeholder="0" name="data.additionalrations.rations.value"/>/{{data.survival.additionalrations.max}}
+        </div>
+        <div class="attributes-list" style="justify-content: center;">
+            <h3>Munizioni</h3>
+            <input class="gold" type="text" value="{{data.survival.ammunition.value}}" placeholder="0" name="data.survival.ammunition.value"/>/{{data.survival.ammunition.max}}
+        </div>
+    </section>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="features">Abilità</a>
+        <a class="item" data-tab="inventory">Oggetti</a>
+        <!--a class="item" data-tab="description">Biografia</-->
+        <a class="item" data-tab="items">Debug</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Features Tab --}}
+        <div class="tab features" data-group="primary" data-tab="features">
+            <h2 class="attributes-header">Abilità di Ruolo</h2>
+            <ul class="features-list">
+                {{#each actor.features as |item id|}}
+                    <li class="item flexrow" data-item-id="{{item._id}}">
+                        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                        <h4 class="item-name item-details-toggle description-hidden">{{item.name}}</h4>
+                        {{#if (eq item.type "activefeature")}}
+                        <a class="rollable feature"><b>[TIRA]</b></a>
+                        {{/if}}
+                        {{#if (eq item.type "spellfeature")}}
+                        <a class="rollable feature"><b>[TIRA]</b></a>
+                        {{/if}}
+                        <div class="item-controls">
+                            <a class="item-control feature-edit" title="Modifica"><i class="fas fa-edit"></i></a>
+                            <a class="item-control feature-delete" title="Elimina"><i class="fas fa-trash"></i></a>
+                        </div>
+                        <div class="item-description">{{{item.data.description}}}</div>
+                    </li>
+                {{/each}}
+            </ul>
+            <h2 class="attributes-header">Abilità di Razza</h2>
+            <ul class="features-list">
+                {{#each actor.racialfeatures as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <h4 class="item-name item-details-toggle description-hidden">{{item.name}}</h4>
+                    {{#if (eq item.type "activefeature")}}
+                    <a class="rollable feature"><b>[TIRA]</b></a>
+                    {{/if}}
+                    {{#if (eq item.type "spellfeature")}}
+                    <a class="rollable feature"><b>[TIRA]</b></a>
+                    {{/if}}
+                    <div class="item-controls">
+                        <a class="item-control feature-edit" title="Modifica"><i class="fas fa-edit"></i></a>
+                        <a class="item-control feature-delete" title="Elimina"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <div class="item-description">{{{item.data.description}}}</div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+
+        {{!-- Biography Tab --}}
+        <!--div class="tab biography" data-group="primary" data-tab="description">
+            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+        </div-->
+
+        {{!-- Inventory Tab --}}
+        <div class="tab inventory" data-group="primary" data-tab="inventory">
+            <h2 class="attributes-header">Equipaggiati</h2>
+            <ul class="equipped-list">
+                {{#if actor.data.inventory.equipped.armor}}
+                <li class="item flexrow" data-item-id="{{actor.data.inventory.equipped.armor._id}}">
+                    <img src="{{data.inventory.equipped.armor.img}}" title="{{data.inventory.equipped.armor.name}}" width="24" height="24"/>
+                    <h4 class="item-name item-details-toggle description-hidden">{{data.inventory.equipped.armor.name}}</h4>
+                    <div class="item-controls">
+                        {{#if item.data.canbenearhand}}
+                        <a class="item-control item-hand" title="Sposta a portata di mano"><i class="fas fa-hand-holding"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-mantle" title="Sposta a Mantello con Tasca"><i class="fas fa-eye-slash"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-band" title="Sposta a Bandoliera"><i class="fas fa-tablets"></i></a>
+                        {{/if}}
+                        <a class="item-control item-backpack" title="Sposta a zaino"><i class="fas fa-briefcase"></i></a>
+                        <a class="item-control item-edit" title="Modifica"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Elimina"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <div class="item-description">{{{data.inventory.equipped.armor.description}}}</div>
+                </li>
+                {{/if}}
+                {{#if actor.data.inventory.equipped.shield}}
+                <li class="item flexrow" data-item-id="{{actor.data.inventory.equipped.shield._id}}">
+                    <img src="{{actor.data.inventory.equipped.shield.img}}" title="{{actor.data.inventory.equipped.shield.name}}" width="24" height="24"/>
+                    <h4 class="item-name item-details-toggle description-hidden">{{actor.data.inventory.equipped.shield.name}}</h4>
+                    <div class="item-controls">
+                        {{#if item.data.canbenearhand}}
+                        <a class="item-control item-hand" title="Sposta a portata di mano"><i class="fas fa-hand-holding"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-mantle" title="Sposta a Mantello con Tasca"><i class="fas fa-eye-slash"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-band" title="Sposta a Bandoliera"><i class="fas fa-tablets"></i></a>
+                        {{/if}}
+                        <a class="item-control item-backpack" title="Sposta a zaino"><i class="fas fa-briefcase"></i></a>
+                        <a class="item-control item-edit" title="Modifica"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Elimina"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <div class="item-description">{{{actor.data.inventory.equipped.shield.description}}}</div>
+                </li>
+                {{/if}}
+                {{#each actor.equipped as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <h4 class="item-name item-details-toggle description-hidden">{{item.name}}</h4>
+                    {{#if item.hasRoll}}
+                    <a class="rollable feature"><b>[TIRA]</b></a>
+                    {{/if}}
+                    <div class="item-controls">
+                        {{#if item.data.canbenearhand}}
+                        <a class="item-control item-hand" title="Sposta a portata di mano"><i class="fas fa-hand-holding"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-mantle" title="Sposta a Mantello con Tasca"><i class="fas fa-eye-slash"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-band" title="Sposta a Bandoliera"><i class="fas fa-tablets"></i></a>
+                        {{/if}}
+                        <a class="item-control item-backpack" title="Sposta a zaino"><i class="fas fa-briefcase"></i></a>
+                        <a class="item-control item-edit" title="Modifica"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Elimina"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <div class="item-description">{{{item.data.description}}}</div>
+                </li>
+                {{/each}}
+            </ul>
+
+            {{#if actor.isGM}}
+            <h2 class="attributes-header">A Portata di Mano (<input type="text" value="{{data.inventory.nearhandsize.value}}" placeholder="0" name="data.inventory.nearhandsize.value"/>/{{data.inventory.nearhandsize.max}})</h2>
+            {{else}}
+            <h2 class="attributes-header">A Portata di Mano ({{data.inventory.nearhandsize.value}}/{{data.inventory.nearhandsize.max}})</h2>
+            {{/if}}
+            <ul class="equipped-list">
+                {{#each actor.nearhand as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <h4 class="item-name item-details-toggle description-hidden">{{item.name}}</h4>
+                    {{#if item.hasRoll}}
+                    <a class="rollable feature"><b>{{#if item.data.consumable}}[USA]{{else}}[TIRA]{{/if}}</b></a>
+                    {{/if}}
+                    <div class="item-controls">
+                        {{#if item.canBeEquipped}}
+                        <a class="item-control item-equip" title="Equipaggia"><i class="fas fa-fist-raised"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-mantle" title="Sposta a Mantello con Tasca"><i class="fas fa-eye-slash"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-band" title="Sposta a Bandoliera"><i class="fas fa-tablets"></i></a>
+                        {{/if}}
+                        <a class="item-control item-backpack" title="Sposta a zaino"><i class="fas fa-briefcase"></i></a>
+                        <a class="item-control item-edit" title="Modifica"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Elimina"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <div class="item-description">{{{item.data.description}}}</div>
+                </li>
+                {{/each}}
+            </ul>
+
+            {{#if actor.isGM}}
+            <h2 class="attributes-header">Mantello con Tasca (<input type="text" value="{{data.inventory.mantlesize.value}}" placeholder="0" name="data.inventory.mantlesize.value"/>/{{data.inventory.mantlesize.value}})</h2>
+            {{else}}
+            <h2 class="attributes-header">Mantello con Tasca ({{data.inventory.mantlesize.value}}/{{data.inventory.mantlesize.max}})</h2>
+            {{/if}}
+            <ul class="equipped-list">
+                {{#each actor.mantle as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <h4 class="item-name item-details-toggle description-hidden">{{item.name}}</h4>
+                    {{#if item.hasRoll}}
+                    <a class="rollable feature"><b>{{#if item.data.consumable}}[USA]{{else}}[TIRA]{{/if}}</b></a>
+                    {{/if}}
+                    <div class="item-controls">
+                        {{#if item.canBeEquipped}}
+                        <a class="item-control item-equip" title="Equipaggia"><i class="fas fa-fist-raised"></i></a>
+                        {{/if}}
+                        {{#if item.data.canbenearhand}}
+                        <a class="item-control item-hand" title="Sposta a portata di mano"><i class="fas fa-hand-holding"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-band" title="Sposta a Bandoliera"><i class="fas fa-tablets"></i></a>
+                        {{/if}}
+                        <a class="item-control item-backpack" title="Sposta a zaino"><i class="fas fa-briefcase"></i></a>
+                        <a class="item-control item-edit" title="Modifica"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Elimina"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <div class="item-description">{{{item.data.description}}}</div>
+                </li>
+                {{/each}}
+            </ul>
+
+            {{#if actor.isGM}}
+            <h2 class="attributes-header">Bandoliera (<input type="text" value="{{data.inventory.bandoleersize.value}}" placeholder="0" name="data.inventory.bandoleersize.value"/>/{{data.inventory.bandoleersize.value}})</h2>
+            {{else}}
+            <h2 class="attributes-header">Bandoliera ({{data.inventory.bandoleersize.value}}/{{data.inventory.bandoleersize.max}})</h2>
+            {{/if}}
+            <ul class="equipped-list">
+                {{#each actor.bandoleer as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <h4 class="item-name item-details-toggle description-hidden">{{item.name}}</h4>
+                    {{#if item.hasRoll}}
+                    <a class="rollable feature"><b>{{#if item.data.consumable}}[USA]{{else}}[TIRA]{{/if}}</b></a>
+                    {{/if}}
+                    <div class="item-controls">
+                        {{#if item.canBeEquipped}}
+                        <a class="item-control item-equip" title="Equipaggia"><i class="fas fa-fist-raised"></i></a>
+                        {{/if}}
+                        {{#if item.data.canbenearhand}}
+                        <a class="item-control item-hand" title="Sposta a portata di mano"><i class="fas fa-hand-holding"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-mantle" title="Sposta a Mantello con Tasca"><i class="fas fa-eye-slash"></i></a>
+                        {{/if}}
+                        <a class="item-control item-backpack" title="Sposta a zaino"><i class="fas fa-briefcase"></i></a>
+                        <a class="item-control item-edit" title="Modifica"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Elimina"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <div class="item-description">{{{item.data.description}}}</div>
+                </li>
+                {{/each}}
+            </ul>
+
+            <h2 class="attributes-header">Indossati</h2>
+            <ul class="equipped-list">
+                {{#each actor.worn as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <h4 class="item-name item-details-toggle description-hidden">{{item.name}}</h4>
+                    {{#if item.hasRoll}}
+                    <a class="rollable feature"><b>{{#if item.data.consumable}}[USA]{{else}}[TIRA]{{/if}}</b></a>
+                    {{/if}}
+                    <div class="item-controls">
+                        {{#if item.data.canbenearhand}}
+                        <a class="item-control item-hand" title="Sposta a portata di mano"><i class="fas fa-hand-holding"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-mantle" title="Sposta a Mantello con Tasca"><i class="fas fa-eye-slash"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-band" title="Sposta a Bandoliera"><i class="fas fa-tablets"></i></a>
+                        {{/if}}
+                        <a class="item-control item-backpack" title="Sposta a zaino"><i class="fas fa-briefcase"></i></a>
+                        <a class="item-control item-edit" title="Modifica"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Elimina"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <div class="item-description">{{{item.data.description}}}</div>
+                </li>
+                {{/each}}
+            </ul>
+
+            <h2 class="attributes-header">Zaino/Borsa</h2>
+            <ul class="equipped-list">
+                {{#each actor.backpack as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <h4 class="item-name item-details-toggle description-hidden">{{item.name}}</h4>
+                    {{#if item.hasRoll}}
+                    <a class="rollable feature"><b>{{#if item.data.consumable}}[USA]{{else}}[TIRA]{{/if}}</b></a>
+                    {{/if}}
+                    <div class="item-controls">
+                        {{#if item.canBeEquipped}}
+                        <a class="item-control item-equip" title="Equipaggia"><i class="fas fa-fist-raised"></i></a>
+                        {{/if}}
+                        {{#if item.data.canbeworn}}
+                        <a class="item-control item-worn" title="Indossa"><i class="fas fa-fist-raised"></i></a>
+                        {{/if}}
+                        {{#if item.data.canbenearhand}}
+                        <a class="item-control item-hand" title="Sposta a portata di mano"><i class="fas fa-hand-holding"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-mantle" title="Sposta a Mantello con Tasca"><i class="fas fa-eye-slash"></i></a>
+                        {{/if}}
+                        {{#if (eq item.data.slots 1)}}
+                        <a class="item-control item-band" title="Sposta a Bandoliera"><i class="fas fa-tablets"></i></a>
+                        {{/if}}
+                        <a class="item-control item-edit" title="Modifica"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Elimina"><i class="fas fa-trash"></i></a>
+                    </div>
+                    <div class="item-description">{{{item.data.description}}}</div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+
+        {{!-- Owned Items Tab --}}
+        <div class="tab items" data-group="primary" data-tab="items">
+            <ol class="item-list">
+                {{#each actor.items as |item id|}}
+                    <li class="item flexrow" data-item-id="{{item._id}}">
+                        <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                        <h4 class="item-name">{{item.name}}</h4>
+                        <div class="item-controls">
+                            <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                            <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </li>
+                {{/each}}
+            </ol>
+        </div>
+    </section>
+</form>
+

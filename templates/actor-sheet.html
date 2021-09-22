@@ -1,0 +1,144 @@
+<form class="{{cssClass}}" autocomplete="off">
+
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        <div class="header-fields">
+            <h3>Sono </h3><h2 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h2>
+            <br>
+            <h3>Un/a </h3><h2 class="classname"><input name="data.class" type="text" value="{{data.class}}" placeholder="Class" data-dtype="String"/></h2>
+        </div>
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="150" width="150"/>
+    </header>
+
+    {{!-- Attributes Section --}}
+    <h2 class="attributes-header">Caratteristiche</h2>
+    <section class="attributes-section">
+        <ul class="attributes-list">
+            <li>
+                <input type="checkbox" name="data.attributes.agility.specialty" {{checked actor.data.attributes.agility.specialty}} />
+                <h3>Agilità</h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.agility.dice" type="text" value="{{data.attributes.agility.dice}}" data-dtype="Number" />D +<input name="data.attributes.agility.modifier" type="text" value="{{data.attributes.agility.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+            <li>
+                <input type="checkbox" name="data.attributes.courage.specialty" {{checked actor.data.attributes.courage.specialty}} />
+                <h3>Coraggio</h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.courage.dice" type="text" value="{{data.attributes.courage.dice}}" data-dtype="Number" />D +<input name="data.attributes.courage.modifier" type="text" value="{{data.attributes.courage.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+            <li>
+                <input type="checkbox" name="data.attributes.strength.specialty" {{checked actor.data.attributes.strength.specialty}} />
+                <h3>Forza</h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.strength.dice" type="text" value="{{data.attributes.strength.dice}}" data-dtype="Number" />D +<input name="data.attributes.strength.modifier" type="text" value="{{data.attributes.strength.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+			<li>
+                <input type="checkbox" name="data.attributes.intelligence.specialty" {{checked actor.data.attributes.intelligence.specialty}} />
+                <h3>Intelligenza</h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.intelligence.dice" type="text" value="{{data.attributes.intelligence.dice}}" data-dtype="Number" />D +<input name="data.attributes.intelligence.modifier" type="text" value="{{data.attributes.intelligence.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+			<li>
+                <input type="checkbox" name="data.attributes.magic.specialty" {{checked actor.data.attributes.magic.specialty}} />
+                <h3>Magia</h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.magic.dice" type="text" value="{{data.attributes.magic.dice}}" data-dtype="Number" />D +<input name="data.attributes.magic.modifier" type="text" value="{{data.attributes.magic.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+			<li>
+                <input type="checkbox" name="data.attributes.dexterity.specialty" {{checked actor.data.attributes.dexterity.specialty}} />
+                <h3>Manualità</h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.dexterity.dice" type="text" value="{{data.attributes.dexterity.dice}}" data-dtype="Number" />D +<input name="data.attributes.dexterity.modifier" type="text" value="{{data.attributes.dexterity.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+			<li>
+                <input type="checkbox" name="data.attributes.perception.specialty" {{checked actor.data.attributes.perception.specialty}} />
+                <h3>Percezione</h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.perception.dice" type="text" value="{{data.attributes.perception.dice}}" data-dtype="Number" />D +<input name="data.attributes.perception.modifier" type="text" value="{{data.attributes.perception.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+			<li>
+                <input type="checkbox" name="data.attributes.sociality.specialty" {{checked actor.data.attributes.sociality.specialty}} />
+                <h3>Socialità</h3>
+                <div class="attribute-value">
+                    <input class="dice-attribute" name="data.attributes.sociality.dice" type="text" value="{{data.attributes.sociality.dice}}" data-dtype="Number" />D +<input name="data.attributes.sociality.modifier" type="text" value="{{data.attributes.sociality.modifier}}" data-dtype="Number" />
+                </div>
+            </li>
+        </ul>
+        <ul class="attributes-list stats">
+            <li>
+                <input class="over-icon" type="text" name="data.armor.value" value="{{data.armor.value}}" data-dtype="Number"/>
+                <img src="systems/ultima-torcia/images/armor.png" />
+                <h2>Armatura</h2>
+            </li>
+            <li>
+                <input class="over-icon" type="text" name="data.health.max" value="{{data.health.max}}" data-dtype="Number"/>
+                <img src="systems/ultima-torcia/images/health.png" />
+                <h2>Salute</h2>
+                <input type="text" name="data.health.value" value="{{data.health.value}}" data-dtype="Number"/>
+                <h3>Attuale</h3>
+            </li>
+            <li>
+                <input class="over-icon" type="text" name="data.mana.max" value="{{data.mana.max}}" data-dtype="Number"/>
+                <img src="systems/ultima-torcia/images/mana.png" />
+                <h2>Mana</h2>
+                <input type="text" name="data.mana.value" value="{{data.mana.value}}" data-dtype="Number"/>
+                <h3>Attuale</h3>
+            </li>
+        </ul>
+    </section>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="features">Abilità</a>
+        <a class="item" data-tab="items">Oggetti</a>
+        <a class="item" data-tab="description">Biografia</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Features Tab --}}
+        <div class="tab items" data-group="primary" data-tab="items">
+            <ol class="item-list">
+                {{#each actor.items as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <h4 class="item-name">{{item.name}}</h4>
+                    <div class="item-controls">
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
+
+        {{!-- Owned Items Tab --}}
+        <div class="tab items" data-group="primary" data-tab="items">
+            <ol class="item-list">
+            {{#each actor.items as |item id|}}
+                <li class="item flexrow" data-item-id="{{item._id}}">
+                    <img src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                    <h4 class="item-name">{{item.name}}</h4>
+                    <div class="item-controls">
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+            {{/each}}
+            </ol>
+        </div>
+
+        {{!-- Biography Tab --}}
+        <div class="tab biography" data-group="primary" data-tab="description">
+            {{editor content=data.biography target="data.biography" button=true owner=owner editable=editable}}
+        </div>
+    </section>
+</form>
+

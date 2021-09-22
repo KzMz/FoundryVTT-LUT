@@ -1,0 +1,157 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">Descrizione</a>
+        <a class="item" data-tab="details">Dettagli</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="attributes-section tab details" data-group="primary" data-tab="details">
+            <ul class="attributes-list">
+                <li>
+                    <h3>Slots</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.slots" type="text" value="{{data.slots}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Prezzo</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.price" type="text" value="{{data.price}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Può essere a portata di mano?</h3>
+                    <div class="attribute-value">
+                        <input type="checkbox" name="data.canbenearhand" {{checked item.data.canbenearhand}} />
+                    </div>
+                </li>
+                <li>
+                    <h3>Può essere indossato?</h3>
+                    <div class="attribute-value">
+                        <input type="checkbox" name="data.canbeworn" {{checked item.data.canbeworn}} />
+                    </div>
+                </li>
+            </ul>
+            <h2 class="attributes-header">Recupero</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Dado Salute</h3>
+                    <div class="attribute-value">
+                        <select name="data.recover.health.faces">
+                            {{#select data.recover.health.faces}}
+                            <option value="">Nessuna</option>
+                            <option value="4">d4</option>
+                            <option value="6">d6</option>
+                            <option value="8">d8</option>
+                            <option value="10">d10</option>
+                            <option value="12">d12</option>
+                            <option value="20">d20</option>
+                            <option value="100">d100</option>
+                            <option value="full">Totale</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Tiro Salute</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.recover.health.dice" type="text" value="{{data.recover.health.dice}}" data-dtype="Number" />
+                        <input class="dice-attribute" name="data.recover.health.modifier" type="text" value="{{data.recover.health.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Dado Mana</h3>
+                    <div class="attribute-value">
+                        <select name="data.recover.mana.faces">
+                            {{#select data.recover.mana.faces}}
+                            <option value="">Nessuna</option>
+                            <option value="4">d4</option>
+                            <option value="6">d6</option>
+                            <option value="8">d8</option>
+                            <option value="10">d10</option>
+                            <option value="12">d12</option>
+                            <option value="20">d20</option>
+                            <option value="100">d100</option>
+                            <option value="full">Totale</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Tiro Mana</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.recover.mana.dice" type="text" value="{{data.recover.mana.dice}}" data-dtype="Number" />
+                        <input class="dice-attribute" name="data.recover.mana.modifier" type="text" value="{{data.recover.mana.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+            </ul>
+
+            <h2 class="attributes-header">Caratteristiche</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Agilità</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.agility.dice" type="text" value="{{data.attributes.agility.dice}}" data-dtype="Number" />D +<input name="data.attributes.agility.modifier" type="text" value="{{data.attributes.agility.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Coraggio</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.courage.dice" type="text" value="{{data.attributes.courage.dice}}" data-dtype="Number" />D +<input name="data.attributes.courage.modifier" type="text" value="{{data.attributes.courage.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Forza</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.strength.dice" type="text" value="{{data.attributes.strength.dice}}" data-dtype="Number" />D +<input name="data.attributes.strength.modifier" type="text" value="{{data.attributes.strength.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Intelligenza</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.intelligence.dice" type="text" value="{{data.attributes.intelligence.dice}}" data-dtype="Number" />D +<input name="data.attributes.intelligence.modifier" type="text" value="{{data.attributes.intelligence.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Magia</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.magic.dice" type="text" value="{{data.attributes.magic.dice}}" data-dtype="Number" />D +<input name="data.attributes.magic.modifier" type="text" value="{{data.attributes.magic.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Manualità</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.dexterity.dice" type="text" value="{{data.attributes.dexterity.dice}}" data-dtype="Number" />D +<input name="data.attributes.dexterity.modifier" type="text" value="{{data.attributes.dexterity.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Percezione</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.perception.dice" type="text" value="{{data.attributes.perception.dice}}" data-dtype="Number" />D +<input name="data.attributes.perception.modifier" type="text" value="{{data.attributes.perception.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Socialità</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.sociality.dice" type="text" value="{{data.attributes.sociality.dice}}" data-dtype="Number" />D +<input name="data.attributes.sociality.modifier" type="text" value="{{data.attributes.sociality.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</form>

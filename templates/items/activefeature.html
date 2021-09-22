@@ -1,0 +1,63 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">Descrizione</a>
+        <a class="item" data-tab="details">Dettagli</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="attributes-section tab details" data-group="primary" data-tab="details">
+            <ul class="attributes-list">
+                <li>
+                    <h3>Caratteristica</h3>
+                    <div class="attribute-value">
+                        <select name="data.attribute">
+                            {{#select data.attribute}}
+                            <option value="agility">Agilità</option>
+                            <option value="courage">Coraggio</option>
+                            <option value="strength">Forza</option>
+                            <option value="magic">Magia</option>
+                            <option value="intelligence">Intelligenza</option>
+                            <option value="dexterity">Manualità</option>
+                            <option value="perception">Percezione</option>
+                            <option value="sociality">Socialità</option>
+                            {{/select}}
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Dadi</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.modifiers.dice" type="text" value="{{data.modifiers.dice}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Tiro</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.modifiers.modifier" type="text" value="{{data.modifiers.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Formula Personalizzata</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute full-width" name="data.customformula" type="text" value="{{data.customformula}}" data-dtype="Number" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</form>

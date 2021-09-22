@@ -1,0 +1,64 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">Descrizione</a>
+        <a class="item" data-tab="details">Dettagli</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="attributes-section tab details" data-group="primary" data-tab="details">
+            <ul class="attributes-list">
+                <li>
+                    <h3>Slots</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.slots" type="text" value="{{data.slots}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Prezzo</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.price" type="text" value="{{data.price}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Può essere a portata di mano?</h3>
+                    <div class="attribute-value">
+                        <input type="checkbox" name="data.canbenearhand" {{checked item.data.canbenearhand}} />
+                    </div>
+                </li>
+                <li>
+                    <h3>Può essere indossato?</h3>
+                    <div class="attribute-value">
+                        <input type="checkbox" name="data.canbeworn" {{checked item.data.canbeworn}} />
+                    </div>
+                </li>
+                <li>
+                    <h3>Raggio</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.range" type="text" value="{{data.range}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Durata (ore)</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.duration" type="text" value="{{data.duration}}" data-dtype="Number" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</form>

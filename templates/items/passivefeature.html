@@ -1,0 +1,185 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-fields">
+            <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">Descrizione</a>
+        <a class="item" data-tab="details">Dettagli</a>
+    </nav>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body">
+        {{!-- Description Tab --}}
+        <div class="tab" data-group="primary" data-tab="description">
+            {{editor content=data.description target="data.description" button=true owner=owner editable=editable}}
+        </div>
+
+        {{!-- Attributes Tab --}}
+        <div class="attributes-section tab details" data-group="primary" data-tab="details">
+            <h2 class="attributes-header">Attributi</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Mod. Salute</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.healthmod" type="text" value="{{data.healthmod}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Mana</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.manamod" type="text" value="{{data.manamod}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Armatura</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.armormod" type="text" value="{{data.armormod}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Iniziativa</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.initiativemod" type="text" value="{{data.initiativemod}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Parate</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.defendmod" type="text" value="{{data.defendmod}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Mod. Recupero Salute</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.healingmod" type="text" value="{{data.healingmod}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Formula Recupero Salute</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.recovery.hpFormula" type="text" value="{{data.recovery.hpFormula}}" data-dtype="String" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Formula Recupero Mana</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.recovery.mpFormula" type="text" value="{{data.recovery.mpFormula}}" data-dtype="String" />
+                    </div>
+                </li>
+            </ul>
+            <h2 class="attributes-header">Caratteristiche</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Agilità</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.agility.dice" type="text" value="{{data.attributes.agility.dice}}" data-dtype="Number" />D +<input name="data.attributes.agility.modifier" type="text" value="{{data.attributes.agility.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Coraggio</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.courage.dice" type="text" value="{{data.attributes.courage.dice}}" data-dtype="Number" />D +<input name="data.attributes.courage.modifier" type="text" value="{{data.attributes.courage.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Forza</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.strength.dice" type="text" value="{{data.attributes.strength.dice}}" data-dtype="Number" />D +<input name="data.attributes.strength.modifier" type="text" value="{{data.attributes.strength.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Intelligenza</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.intelligence.dice" type="text" value="{{data.attributes.intelligence.dice}}" data-dtype="Number" />D +<input name="data.attributes.intelligence.modifier" type="text" value="{{data.attributes.intelligence.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Magia</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.magic.dice" type="text" value="{{data.attributes.magic.dice}}" data-dtype="Number" />D +<input name="data.attributes.magic.modifier" type="text" value="{{data.attributes.magic.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Manualità</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.dexterity.dice" type="text" value="{{data.attributes.dexterity.dice}}" data-dtype="Number" />D +<input name="data.attributes.dexterity.modifier" type="text" value="{{data.attributes.dexterity.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Percezione</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.perception.dice" type="text" value="{{data.attributes.perception.dice}}" data-dtype="Number" />D +<input name="data.attributes.perception.modifier" type="text" value="{{data.attributes.perception.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Socialità</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.attributes.sociality.dice" type="text" value="{{data.attributes.sociality.dice}}" data-dtype="Number" />D +<input name="data.attributes.sociality.modifier" type="text" value="{{data.attributes.sociality.modifier}}" data-dtype="Number" />
+                    </div>
+                </li>
+            </ul>
+            <h2 class="attributes-header">Danni</h2>
+            <ul class="attributes-list">
+                <li>
+                    <h3>Armi Piccole</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.damagemods.small" type="text" value="{{data.damagemods.small}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Armi Medie</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.damagemods.medium" type="text" value="{{data.damagemods.medium}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Armi Pesanti</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.damagemods.heavy" type="text" value="{{data.damagemods.heavy}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Armi da Mischia</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.damagemods.allmelee" type="text" value="{{data.damagemods.allmelee}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Archi</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.damagemods.bow" type="text" value="{{data.damagemods.bow}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Balestre</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.damagemods.lightbow" type="text" value="{{data.damagemods.lightbow}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Armi a Distanza</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.damagemods.allranged" type="text" value="{{data.damagemods.allranged}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Tutte</h3>
+                    <div class="attribute-value">
+                        <input class="dice-attribute" name="data.damagemods.all" type="text" value="{{data.damagemods.all}}" data-dtype="Number" />
+                    </div>
+                </li>
+                <li>
+                    <h3>Massimo danno sul 10?</h3>
+                    <div class="attribute-value">
+                        <input type="checkbox" name="data.damagemods.maxdamageoncrit" {{checked item.data.damagemods.maxdamageoncrit}} />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</form>

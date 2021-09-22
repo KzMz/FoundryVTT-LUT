@@ -1,0 +1,439 @@
+{
+  "Actor": {
+    "types": ["character", "npc"],
+    "templates": {
+      "base": {
+        "health": {
+          "value": 0,
+          "min": -5,
+          "max": 0
+        },
+        "mana": {
+          "value": 0,
+          "min": 0,
+          "max": 0
+        },
+        "armor": {
+          "value": 2,
+          "min": 2
+        },
+        "defend": {
+          "max": 1,
+          "min": 1,
+          "value": 1
+        },
+        "attributes": {
+          "agility": {
+            "dice": 1,
+            "modifier": 0,
+            "specialty": false
+          },
+          "courage": {
+            "dice": 1,
+            "modifier": 0,
+            "specialty": false
+          },
+          "strength": {
+            "dice": 1,
+            "modifier": 0,
+            "specialty": false
+          },
+          "intelligence": {
+            "dice": 1,
+            "modifier": 0,
+            "specialty": false
+          },
+          "magic": {
+            "dice": 1,
+            "modifier": 0,
+            "specialty": false
+          },
+          "dexterity": {
+            "dice": 1,
+            "modifier": 0,
+            "specialty": false
+          },
+          "perception": {
+            "dice": 1,
+            "modifier": 0,
+            "specialty": false
+          },
+          "sociality": {
+            "dice": 1,
+            "modifier": 0,
+            "specialty": false
+          }
+        },
+        "modifiers": {
+          "health": 0,
+          "mana": 0,
+          "armor": 0,
+          "initiative": 0,
+          "damage": {
+            "allmelee": 0,
+            "small": 0,
+            "medium": 0,
+            "heavy": 0,
+            "allranged": 0,
+            "bows": 0,
+            "lightbow": 0,
+            "all": 0
+          },
+          "attributes": {
+            "agility": 0,
+            "courage": 0,
+            "strength": 0,
+            "magic": 0,
+            "intelligence": 0,
+            "dexterity": 0,
+            "perception": 0,
+            "sociality": 0
+          }
+        },
+        "features": []
+      }
+    },
+    "character": {
+      "templates": ["base"],
+      "biography": "",
+      "adventurepoints": 0,
+      "gold": 0,
+      "inventory": {
+        "backpack": [],
+        "equipped": {
+          "armor": null,
+          "weapons": [],
+          "shield": null
+        },
+        "nearhand": [],
+        "nearhandsize": {
+          "max": 10,
+          "value": 10
+        },
+        "mantle": [],
+        "mantlesize": {
+          "max": 1,
+          "value": 1
+        },
+        "bandoleer": [],
+        "bandoleersize": {
+          "max": 2,
+          "value": 2
+        }
+      },
+      "survival": {
+        "water": {
+          "min": 0,
+          "max": 7,
+          "value": 0
+        },
+        "rations": {
+          "min": 0,
+          "max": 7,
+          "value": 0
+        },
+        "additionalrations": {
+          "min": 0,
+          "max": 7,
+          "value": 0
+        },
+        "ammunition": {
+          "min": 0,
+          "max": 20,
+          "value": 0
+        }
+      }
+    },
+    "npc": {
+      "templates": ["base"]
+    }
+  },
+  "Item": {
+    "types": ["race", "role", "guild", "passivefeature", "activefeature", "spellfeature", "spellscroll", "armor", "shield", "generic", "weapon", "light", "potion"],
+    "templates": {
+      "base": {
+        "qualities": []
+      }
+    },
+    "race": {
+      "description": "",
+      "healthbase": 0,
+      "manabase": 0,
+      "choosemodifier": false,
+      "attributes": {
+        "agilitymod": 0,
+        "couragemod": 0,
+        "strengthmod": 0,
+        "intelligencemod": 0,
+        "magicmod": 0,
+        "dexteritymod": 0,
+        "perceptionmod": 0,
+        "socialitymod": 0
+      },
+      "features": []
+    },
+    "role": {
+      "description": "",
+      "healthmod": 0,
+      "manamod": 0,
+      "attributes": {
+        "agility": 1,
+        "courage": 1,
+        "strength": 1,
+        "intelligence": 1,
+        "magic": 1,
+        "dexterity": 1,
+        "perception": 1,
+        "sociality": 1
+      },
+      "features": [],
+      "prerequisites": {
+        "race": ""
+      }
+    },
+    "guild": {
+      "description": ""
+    },
+    "passivefeature": {
+      "description": "",
+      "healthmod": 0,
+      "manamod": 0,
+      "armormod": 0,
+      "initiativemod": 0,
+      "defendmod": 0,
+      "healingmod": 0,
+      "recovery": {
+        "hpFormula": "",
+        "mpFormula": ""
+      },
+      "damagemods": {
+        "allmelee": 0,
+        "small": 0,
+        "medium": 0,
+        "heavy": 0,
+        "allranged": 0,
+        "bow": 0,
+        "lightbow": 0,
+        "all": 0,
+        "maxdamageoncrit": false
+      },
+      "attributes": {
+        "agility": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "courage": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "strength": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "intelligence": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "magic": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "dexterity": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "perception": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "sociality": {
+          "dice": 0,
+          "modifier": 0
+        }
+      }
+    },
+    "activefeature": {
+      "description": "",
+      "attribute": "",
+      "modifiers": {
+        "dice": "",
+        "modifier": ""
+      },
+      "customformula": ""
+    },
+    "spellfeature": {
+      "description": "",
+      "type": "",
+      "manaprice": 1,
+      "duration": {
+        "attribute": "",
+        "modifier": "",
+        "custom": "Giro/i",
+        "faces": "",
+        "customformula": ""
+      },
+      "target": {
+        "attribute": "",
+        "modifier": "",
+        "custom": "Creatura/e",
+        "faces": "",
+        "customformula": ""
+      },
+      "hit": {
+        "attribute": "",
+        "modifier": "",
+        "custom": "",
+        "customformula": ""
+      },
+      "damage": {
+        "attribute": "",
+        "modifier": "",
+        "custom": "Danno/i",
+        "faces": "",
+        "customformula": "",
+        "healing": false
+      }
+    },
+    "armor": {
+      "description": "",
+      "price": 0,
+      "manaprice": 1,
+      "slots": 1,
+      "container": "",
+      "armormod": 0,
+      "attributes": {
+        "agilitymod": 0,
+        "couragemod": 0,
+        "strengthmod": 0,
+        "intelligencemod": 0,
+        "magicmod": 0,
+        "dexteritymod": 0,
+        "perceptionmod": 0,
+        "socialitymod": 0
+      }
+    },
+    "shield": {
+      "description": "",
+      "price": 0,
+      "slots": 1,
+      "armormod": 0,
+      "container": ""
+    },
+    "generic": {
+      "description": "",
+      "price": 0,
+      "slots": 1,
+      "canbenearhand": false,
+      "canbeworn": false,
+      "container": ""
+    },
+    "weapon": {
+      "description": "",
+      "price": 0,
+      "slots": 1,
+      "container": "",
+      "canbenearhand": true,
+      "canbeworn": false,
+      "qualities": [],
+      "range": "",
+      "hit": {
+        "attribute": "",
+        "modifier": "",
+        "custom": "",
+        "customformula": ""
+      },
+      "damage": {
+        "attribute": "",
+        "modifier": "",
+        "custom": "",
+        "faces": "",
+        "customformula": ""
+      }
+    },
+    "potion": {
+      "description": "",
+      "slots": 0,
+      "price": 0,
+      "container": "",
+      "canbenearhand": true,
+      "canbeworn": false,
+      "consumable": true,
+      "recover": {
+        "health": {
+          "faces": "",
+          "dice": 1,
+          "modifier": 0
+        },
+        "mana": {
+          "faces": "",
+          "dice": 1,
+          "modifier": 0
+        }
+      },
+      "attributes": {
+        "agility": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "courage": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "strength": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "intelligence": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "magic": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "dexterity": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "perception": {
+          "dice": 0,
+          "modifier": 0
+        },
+        "sociality": {
+          "dice": 0,
+          "modifier": 0
+        }
+      }
+    },
+    "light": {
+      "description": "",
+      "price": 0,
+      "slots": 1,
+      "container": "",
+      "canbenearhand": true,
+      "canbeworn": false,
+      "range": "",
+      "duration": 1
+    },
+    "container": {
+      "description": "",
+      "price": 0,
+      "slots": 1,
+      "container": "",
+      "canbenearhand": true,
+      "canbeworn": false,
+      "size": 0
+    },
+    "spellscroll": {
+      "description": "",
+      "spell": "",
+      "manaprice": 1,
+      "consumable": true,
+      "price": 0,
+      "slots": 0,
+      "container": "",
+      "canbenearhand": true,
+      "canbeworn": false
+    }
+  }
+}
